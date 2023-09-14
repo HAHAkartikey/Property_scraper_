@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+</head>
+<body>
+    <h1>Welcome to the Admin Dashboard</h1>
+    
+    <h2>Scraping Run History</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Timestamp</th>
+                <th>Records Scraped</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for run in scraping_runs %}
+            <tr>
+                <td>{{ run.timestamp }}</td>
+                <td>{{ run.records_scraped }}</td>
+                <td>{{ run.status }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    <h2>Admin Settings</h2>
+    <p>Cron Job Status: {% if cron_job_status %}Enabled{% else %}Disabled{% endif %}</p>
+    <p>Cron Job Schedule: {{ admin_settings.cron_job_schedule }}</p>
+    
+    <!-- Add more elements and data as needed -->
+</body>
+</html>
